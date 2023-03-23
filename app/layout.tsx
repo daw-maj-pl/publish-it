@@ -23,6 +23,7 @@ export default function RootLayout({
       <body
         className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-gray-200`}
       >
+        {/* @ts-ignore */}
         <Nav />
         {children}
       </body>
