@@ -1,3 +1,11 @@
+'use client';
+
+import AddPost from './AddPost';
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <AddPost />
+    </div>
+  );
 }
