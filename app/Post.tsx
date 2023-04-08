@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 type Props = {
   id: string;
@@ -18,7 +19,12 @@ type Props = {
 
 export default function Post({ id, name, avatar, postTitle, comments }: Props) {
   return (
-    <div className="bg-white my-8 p-8 rounded-lg ">
+    <motion.div
+      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      transition={{ ease: 'easeOut' }}
+      className="bg-white my-8 p-8 rounded-lg "
+    >
       <div className="flex items-center gap-2">
         <Image
           className="rounded-full"
@@ -43,6 +49,6 @@ export default function Post({ id, name, avatar, postTitle, comments }: Props) {
           </p>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
