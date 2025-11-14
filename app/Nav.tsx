@@ -3,6 +3,7 @@ import { authOptions } from '../pages/api/auth/[...nextauth]';
 import Login from './auth/Login';
 import Logged from './auth/Logged';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default async function Nav() {
   const session = await getServerSession(authOptions);
@@ -10,7 +11,13 @@ export default async function Nav() {
   return (
     <nav className="flex justify-between items-center py-8">
       <Link href={'/'}>
-        <h1 className="font-bold text-lg">PublishIt.</h1>
+        <Image
+            src="/publish-it-logo.png"
+            alt="Publish It logo"
+            width={60}
+            height={60}
+            priority
+          />
       </Link>
       <ul className="flex items-center gap-6">
         {!session?.user && <Login />}
