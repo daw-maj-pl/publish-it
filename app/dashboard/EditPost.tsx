@@ -7,12 +7,14 @@ import axios, { AxiosError } from 'axios';
 import Toggle from './Toggle';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 type EditProps = {
   id: string;
   avatar: string;
   name: string;
   title: string;
+  createdAt: string;
   comments?: {
     id: string;
     postId: string;
@@ -25,7 +27,8 @@ export default function EditPost({
   name,
   title,
   comments,
-  id
+  id,
+  createdAt
 }: EditProps) {
   const [toggle, setToggle] = useState(false);
   const queryClient = useQueryClient();
@@ -62,16 +65,28 @@ export default function EditPost({
         className="bg-white my-8 p-8 rounded-lg "
       >
         <div className="flex items-center gap-2">
-          <Image width={32} height={32} src={avatar} alt="avatar" />
+          <Image
+            className="rounded-full"
+            width={32}
+            height={32}
+            src={avatar}
+            alt="avatar"
+          />
           <h3 className="font-bold text-gray-700">{name}</h3>
+          <h2 className="text-sm text-gray-700">
+            {new Date(createdAt).toLocaleString()}
+          </h2>
         </div>
         <div className="my-8">
           <p className="break-all">{title}</p>
         </div>
         <div className="flex items-center gap-4 ">
-          <p className=" text-sm font-bold text-gray-700">
-            {comments?.length} Comments
-          </p>
+          <Link href={{ pathname: `/post/${id}` }}>
+            <p className=" text-sm font-bold text-gray-700">
+              {comments?.length} Comments
+            </p>
+          </Link>
+
           <button
             onClick={e => {
               setToggle(true);

@@ -9,6 +9,7 @@ type Props = {
   name: string;
   avatar: string;
   postTitle: string;
+  createdAt: string;
   comments: {
     id: string;
     createdAt: string;
@@ -17,7 +18,14 @@ type Props = {
   }[];
 };
 
-export default function Post({ id, name, avatar, postTitle, comments }: Props) {
+export default function Post({
+  id,
+  name,
+  avatar,
+  postTitle,
+  comments,
+  createdAt
+}: Props) {
   return (
     <motion.div
       animate={{ opacity: 1, scale: 1 }}
@@ -34,6 +42,9 @@ export default function Post({ id, name, avatar, postTitle, comments }: Props) {
           alt="avatar"
         />
         <h3 className="font-bold text-gray-700">{name}</h3>
+        <h2 className="text-sm text-gray-700">
+          {new Date(createdAt).toLocaleString()}
+        </h2>
       </div>
       <div className="my-8 ">
         <p className="break-all">{postTitle}</p>

@@ -34,6 +34,7 @@ export default function PostDetail(url: URL) {
         avatar={data?.user.image!}
         postTitle={data?.title!}
         comments={data?.comments!}
+        createdAt={data?.createdAt!}
       />
       <AddComment id={data?.id} />
       {data?.comments?.map(comment => (
@@ -52,8 +53,8 @@ export default function PostDetail(url: URL) {
               alt="avatar"
               className="rounded-full"
             />
-            <h3 className="font-bold">{comment?.user?.name}</h3>
-            <h2 className="text-sm">
+            <h3 className="font-bold text-gray-700">{comment?.user?.name}</h3>
+            <h2 className="text-sm text-gray-700">
               {new Date(comment.createdAt).toLocaleString()}
             </h2>
           </div>

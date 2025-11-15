@@ -16,7 +16,7 @@ export default function MyPosts(): JSX.Element {
     queryKey: ['auth-post']
   });
   if (isLoading) return <h1>Posts are loading...</h1>;
-  console.log(data);
+
   return (
     <div>
       {data?.Post?.map(post => (
@@ -27,6 +27,7 @@ export default function MyPosts(): JSX.Element {
           name={data.name}
           title={post.title}
           comments={post.comments}
+          createdAt={post.createdAt}
         />
       ))}
     </div>
